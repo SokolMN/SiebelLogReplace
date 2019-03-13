@@ -44,10 +44,6 @@ public class SiebelLog {
             System.out.println("ЭТО СЕЛЕКТ");
         }
 
-
-
-       // System.out.println(siebelStringTotal);
-
     }
 
 

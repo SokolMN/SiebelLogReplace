@@ -59,8 +59,17 @@ public class Main {
 
        @Override
        public void actionPerformed(ActionEvent e) {
-           SiebelLog.replaceLog(Main.textAreaSiebel.getText());
-           Main.textAreaSiebelResult.setText(SiebelLog.siebelStringTotal);
+          SQLStatement sqlStatement = new SelectStatement(Main.textAreaSiebel.getText());
+          Main.textAreaSiebelResult.setText(replace(sqlStatement));
+       }
+
+       private String replace(SQLStatement sqlStatement){
+           sqlStatement.setKeyList();
+           sqlStatement.setKeyValueTable();
+           sqlStatement.removeFirstBind();
+           sqlStatement.replaceLog();
+           sqlStatement.cutObjBinds();
+           return sqlStatement.getSiebelReplaceLog();
        }
    }
 
