@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 
 public class Main {
@@ -59,8 +60,17 @@ public class Main {
 
        @Override
        public void actionPerformed(ActionEvent e) {
-          SQLStatement sqlStatement = new SelectStatement(Main.textAreaSiebel.getText());
-          Main.textAreaSiebelResult.setText(replace(sqlStatement));
+           Pattern selectPattern = Pattern.compile("SELECT\\n");
+           boolean select = selectPattern.matcher(Main.textAreaSiebel.getText()).find();
+           SQLStatement sqlStatement;
+
+           if(select){
+               sqlStatement = new SelectStatement(Main.textAreaSiebel.getText());
+           }else{
+               sqlStatement = new SQLStatement(Main.textAreaSiebel.getText());
+           }
+           
+           Main.textAreaSiebelResult.setText(replace(sqlStatement));
        }
 
        private String replace(SQLStatement sqlStatement){
