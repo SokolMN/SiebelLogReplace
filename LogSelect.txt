@@ -1,0 +1,360 @@
+SELECT
+      T10.CONFLICT_ID,
+      T10.LAST_UPD,
+      T10.CREATED,
+      T10.LAST_UPD_BY,
+      T10.CREATED_BY,
+      T10.MODIFICATION_NUM,
+      T10.ROW_ID,
+      T10.UNIVERSAL_MSG_FLG,
+      T10.MSG_BODY,
+      T10.ABSTRACT,
+      T10.ACTIVATE_DT,
+      T10.EXPIRATION_DT,
+      T10.BRDCST_MSG_ID,
+      T10.PRDINT_ID,
+      T10.PR_RECIP_ORG_ID,
+      T10.PR_RECIP_POSTN_ID,
+      T1.NAME,
+      T10.BCST_MSG_TYPE_CD,
+      T10.BRDCST_VIA_MB_FLG,
+      T9.STATUS_VAL,
+      T10.DISA_DISMISS_FLG,
+      T10.PR_RECIP_USER_ID,
+      T8.NAME,
+      T6.ROW_ID,
+      T7.NAME,
+      T3.ROW_ID,
+      T2.LOGIN,
+      T4.LOGIN,
+      T5.ROW_ID,
+      T6.ROW_ID,
+      T3.ROW_ID,
+      T5.ROW_ID,
+      :1
+   FROM 
+       SIEBEL.S_PROD_INT T1,
+       SIEBEL.S_USER T2,
+       SIEBEL.S_PARTY T3,
+       SIEBEL.S_USER T4,
+       SIEBEL.S_PARTY T5,
+       SIEBEL.S_PARTY T6,
+       SIEBEL.S_POSTN T7,
+       SIEBEL.S_ORG_EXT T8,
+       SIEBEL.S_BCSTMSG_USER T9,
+       SIEBEL.S_BRDCST_MSG T10
+   WHERE 
+      T10.ROW_ID = T9.MSG_ID (+) AND T9.USER_ID (+) = :2 AND
+      T10.PRDINT_ID = T1.ROW_ID (+) AND
+      T10.PR_RECIP_ORG_ID = T6.ROW_ID (+) AND
+      T10.PR_RECIP_ORG_ID = T8.PAR_ROW_ID (+) AND
+      T10.PR_RECIP_POSTN_ID = T3.ROW_ID (+) AND
+      T10.PR_RECIP_POSTN_ID = T7.PAR_ROW_ID (+) AND
+      T7.PR_EMP_ID = T2.PAR_ROW_ID (+) AND
+      T10.PR_RECIP_USER_ID = T5.ROW_ID (+) AND
+      T10.PR_RECIP_USER_ID = T4.PAR_ROW_ID (+) AND
+      ((T10.UNIVERSAL_MSG_FLG = :3 OR T10.ROW_ID IN (
+            SELECT SQ1_T1.MSG_ID
+               FROM  SIEBEL.S_BCSTMSG_POSTN SQ1_T1, SIEBEL.S_PARTY SQ1_T2, SIEBEL.S_POSTN SQ1_T3
+               WHERE ( SQ1_T2.ROW_ID = SQ1_T3.PAR_ROW_ID AND SQ1_T1.POSITION_ID = SQ1_T2.ROW_ID) 
+                   AND (SQ1_T2.ROW_ID IN (:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19,:20,:21,:22,:23,:24,:25,:26,:27,:28,:29,:30,:31,:32,:33,:34,:35,:36,:37,:38,:39,:40,:41,:42,:43,:44,:45,:46,:47,:48,:49,:50,:51,:52,:53,:54,:55,:56,:57,:58,:59,:60,:61,:62,:63,:64,:65,:66,:67,:68,:69,:70,:71,:72,:73,:74,:75,:76,:77,:78,:79,:80,:81,:82,:83,:84,:85,:86,:87,:88,:89,:90,:91,:92,:93,:94,:95,:96,:97,:98,:99,:100,:101,:102,:103))) OR T10.ROW_ID IN (
+            SELECT SQ1_T2.MSG_ID
+               FROM  SIEBEL.S_PARTY SQ1_T1, SIEBEL.S_BCSTMSG_DIVN SQ1_T2, SIEBEL.S_ORG_EXT SQ1_T3
+               WHERE ( SQ1_T1.ROW_ID = SQ1_T3.PAR_ROW_ID AND SQ1_T2.INT_OU_ID = SQ1_T1.ROW_ID) 
+                   AND (SQ1_T3.INT_ORG_FLG = 'Y') 
+                   AND (SQ1_T1.ROW_ID IN (:104,:105,:106,:107,:108,:109,:110,:111,:112,:113,:114,:115,:116,:117,:118,:119,:120,:121,:122,:123,:124,:125,:126,:127,:128,:129,:130,:131,:132,:133,:134,:135,:136,:137,:138,:139,:140))) OR T10.ROW_ID IN (
+            SELECT SQ1_T3.MSG_ID
+               FROM  SIEBEL.S_USER SQ1_T1, SIEBEL.S_PARTY SQ1_T2, SIEBEL.S_BCSTMSG_USER SQ1_T3, SIEBEL.S_CONTACT SQ1_T4
+               WHERE ( SQ1_T2.ROW_ID = SQ1_T1.PAR_ROW_ID AND SQ1_T2.ROW_ID = SQ1_T4.PAR_ROW_ID AND SQ1_T3.USER_ID = SQ1_T2.ROW_ID) 
+                   AND (SQ1_T1.USER_FLG = 'Y') 
+                   AND (SQ1_T2.ROW_ID = :141))) AND (T10.ACTIVATE_DT IS NULL OR T10.ACTIVATE_DT <= TO_DATE(:142,'MM/DD/YYYY HH24:MI:SS')) AND (T10.EXPIRATION_DT IS NULL OR T10.EXPIRATION_DT > TO_DATE(:143,'MM/DD/YYYY HH24:MI:SS')) AND T10.BRDCST_VIA_MB_FLG = :144)
+   ORDER BY
+      T10.ACTIVATE_DT, T10.EXPIRATION_DT
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 1: ,,,MSOKOLOV,000000025c796e9c:0,,Broadcast Message,ATC Express Home View
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 2: 1-CDGQ6Z
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 3: Y
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 4: 0-5220
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 5: 0-55RNY
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 6: 0-57T1J
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 7: 0V-1G7IJH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 8: 1-126GV
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 9: 1-12PP0I
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 10: 1-13BWY8
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 11: 1-13BX5P
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 12: 1-14LOG3
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 13: 1-14YK5I
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 14: 1-14YN75
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 15: 1-160QY
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 16: 1-160R5
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 17: 1-160RC
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 18: 1-163ZS
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 19: 1-163ZZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 20: 1-16406
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 21: 1-164CS
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 22: 1-164CZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 23: 1-164D6
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 24: 1-164HE
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 25: 1-164HL
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 26: 1-164HS
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 27: 1-17Q62
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 28: 1-17Q69
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 29: 1-17Q6R
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 30: 1-17Q6Y
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 31: 1-17Q75
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 32: 1-17Q7T
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 33: 1-17Q80
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 34: 1-17Q87
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 35: 1-17Q9G
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 36: 1-17Q9N
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 37: 1-17Q9U
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 38: 1-17QAR
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 39: 1-17QAY
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 40: 1-17QB5
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 41: 1-1BC3X
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 42: 1-1BC44
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 43: 1-1BC4B
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 44: 1-1DLWPF
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 45: 1-1E57F
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 46: 1-1E57M
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 47: 1-1E57T
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 48: 1-1FACN
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 49: 1-1FACU
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 50: 1-1FAD1
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 51: 1-1FAYZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 52: 1-1FAZ7
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 53: 1-1FAZE
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 54: 1-1FHVID
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 55: 1-1FHVIJ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 56: 1-1FHVIP
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 57: 1-1FOIXD
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 58: 1-1FOIY7
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 59: 1-1FOJ05
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 60: 1-1FOJ1J
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 61: 1-1FOJ2D
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 62: 1-1FOJ37
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 63: 1-1FOJ55
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 64: 1-1FOJ5Z
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 65: 1-1FP12P
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 66: 1-1FP13J
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 67: 1-1FP14D
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 68: 1-1FP1RF
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 69: 1-1FP1S9
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 70: 1-1FQSBD
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 71: 1-1FQSCH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 72: 1-1FQSEZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 73: 1-1FRJ4D
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 74: 1-1K1O2L
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 75: 1-1K1O2T
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 76: 1-1K1O31
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 77: 1-1K5OR
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 78: 1-1KEDNI
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 79: 1-1LE0SN
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 80: 1-1LKG24
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 81: 1-1M2ZSC
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 82: 1-1M2ZTK
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 83: 1-1M2ZTX
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 84: 1-1M2ZUA
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 85: 1-1M2ZUN
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 86: 1-1M2ZV0
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 87: 1-1M2ZVD
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 88: 1-1M2ZVQ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 89: 1-1M2ZW3
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 90: 1-1M2ZWG
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 91: 1-1M2ZWT
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 92: 1-1M2ZX6
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 93: 1-1M2ZXJ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 94: 1-1M2ZXW
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 95: 1-1M2ZY9
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 96: 1-1M2ZYM
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 97: 1-1M2ZYZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 98: 1-1M2ZZC
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 99: 1-1M2ZZP
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 100: 1-1M3002
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 101: 1-1M300F
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 102: 1-1M300S
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 103: 1-1M3015
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 104: 1-28Y8
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 105: 0-55RNV
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 106: 0-R9NH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 107: 1-3Z3P
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 108: 1-3Z3A
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 109: 1-7QZTGZ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 110: 1-28YC
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 111: 1-6BWOH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 112: 1-3Z3T
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 113: 1-P97RA
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 114: 1-LGPCV
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 115: 1-DU5XJ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 116: 1-160QN
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 117: 1-17QAF
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 118: 1-1E573
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 119: 1-3Z35
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 120: 1-163Z4
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 121: 1-164BJ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 122: 1-164CH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 123: 1-17Q6G
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 124: 1-17Q5I
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 125: 1-17Q95
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 126: 1-17Q7H
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 127: 1-1X6IO
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 128: 1-LGPEJ
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 129: 1-1BC3J
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 130: 1-P97Q1
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 131: 1-19HVY
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 132: 1-1FAC3
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 133: 1-1FHVI3
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 134: 1-UU1D0
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 135: 1-1640A
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 136: 1-50IGC
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 137: 1-1K1O12
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 138: 1-U9S58
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 139: 1-FU3PH
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 140: 1-1M2ZSF
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 141: 1-CDGQ6Z
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 142: 03/01/2019 12:47:23
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 143: 03/01/2019 12:47:23
+
+ObjMgrSqlLog	Detail	4	000000025c796e9c:0	2019-03-01 15:47:23	Bind variable 144: Y
