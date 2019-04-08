@@ -1,0 +1,21 @@
+UPDATE SIEBEL.S_EVT_ACT SET
+      DB_LAST_UPD_SRC = :1,
+      DB_LAST_UPD = current_date,
+      LAST_UPD = :2,
+      LAST_UPD_BY = :3,
+      MODIFICATION_NUM = :4,
+      APPT_DURATION_MIN = :5,
+      EVT_STAT_CD = :6,
+      TODO_PLAN_END_DT = :7
+   WHERE
+      ROW_ID = :8 AND MODIFICATION_NUM = :9
+
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 1: ScriptingBusComp_PreInvokeMethod
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 2: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 3: 1-CX1ZQV
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 4: 4
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 5: 2
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 6: Закрыто
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 7: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 8: 1-HJLTGY
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:141959	2019-04-08 12:34:45	Bind variable 9: 3
