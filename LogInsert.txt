@@ -1,0 +1,148 @@
+INSERT INTO SIEBEL.S_EVT_ACT  (
+      CONFLICT_ID,
+      DB_LAST_UPD_SRC,
+      DB_LAST_UPD,
+      LAST_UPD,
+      CREATED,
+      LAST_UPD_BY,
+      CREATED_BY,
+      MODIFICATION_NUM,
+      ROW_ID,
+      X_FIRST_SR_TRANSIT_FLG,
+      X_QD_SUCCESS_FLG,
+      WC_TYPE_CD,
+      APPT_START_DT,
+      DURATION_HRS,
+      OWNER_LOGIN,
+      OWNER_PER_ID,
+      ALLOW_BREAK_FLG,
+      WORK_TM_MIN,
+      SCHED_LOCKED_FLG,
+      EST_RMNG_WRK_TM,
+      AMT_EXCH_DT,
+      AMT_CURCY_CD,
+      EST_COST_EXCH_DT,
+      EST_COST_CURCY_CD,
+      SUBTYPE_CD,
+      PR_ORDER_ID,
+      CAL_TYPE_CD,
+      STATUS_RPT_FLG,
+      DO_NOT_ROUTE_FLG,
+      PYMNT_DEV_AMT,
+      ACT_CREATED_BY,
+      ACT_CREATED_DT,
+      MAX_PYMNT_AMT,
+      PYMNT_FLG,
+      OWNER_POSTN_ID,
+      OWNER_OU_ID,
+      PR_PRDINT_ID,
+      PR_PROD_CAT_ID,
+      INTEGRATION_ID,
+      MIN_OFFSET_TO_STRT,
+      MAX_OFFSET_TO_STRT,
+      X_AUTH_FLG,
+      APPT_REPT_FLG,
+      PRIV_FLG,
+      TODO_PLAN_START_DT,
+      APPT_DURATION_MIN,
+      ROW_STATUS,
+      CAL_DISP_FLG,
+      TODO_CD,
+      EVT_STAT_CD,
+      CREATOR_LOGIN,
+      ALARM_FLAG,
+      ACTIVITY_UID,
+      ASGN_USR_EXCLD_FLG,
+      COST_CURCY_CD,
+      COST_EXCH_DT,
+      TARGET_PER_ID,
+      EXP_RLTD_FLG,
+      TEMPLATE_FLG,
+      PR_SYMPTOM_CD,
+      TARGET_PER_ADDR_ID,
+      X_ACCESS_CODE_COUNT,
+      X_NOT_VOICED_NOTICE_QTY,
+      X_AVLIABLE_NOTICE_QTY,
+      X_TRY_AUTH_PHOTO_COUNTER,
+      TODO_PLAN_END_DT,
+      X_CALL_SUCCESS,
+      X_CONFIRM_PHONE_NUMB_FLAG,
+      X_BU_ID,
+      X_INVALID_PASSPORT_FLG,
+      X_INTERNAL_VOICE_STANDART_FLG,
+      X_CODE_WORD_COUNT,
+      X_AUTH_TYPE)
+VALUES (:1, :2, current_date, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14, :15, :16, :17, :18, :19, :20, :21, :22, :23, :24, :25, :26, :27, :28, :29, :30, :31, :32, :33, :34, :35, :36, :37, :38, :39, :40, :41, :42, :43, :44, :45, :46, :47, :48, :49, :50, :51, :52, :53, :54, :55, :56, :57, :58, :59, :60, :61, :62, :63, :64, :65, :66, :67, :68, :69, :70, :71, :72)
+
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 1: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 2: ScriptingBusComp_PreInvokeMethod
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 3: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 4: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 5: 1-CX1ZQV
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 6: 1-CX1ZQV
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 7: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 8: 1-HJLTKW
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 9: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 10: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 11: Интеракт. переписка и сотрудн.
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 12: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 13: 8
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 14: DVYALYKH
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 15: 1-CX1ZQV
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 16: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 17: 15
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 18: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 19: 8
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 20: 04/08/2019 00:00:00
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 21: RUB
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 22: 04/08/2019 00:00:00
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 23: RUB
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 24: Общий
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 25: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 26: Календарь и задачи
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 27: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 28: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 29: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 30: 1-CX1ZQV
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 31: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 32: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 33: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 34: 1-6BWOR
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 35: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 36: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 37: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 38: S11060855808
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 39: 15
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 40: 15
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 41: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 42: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 43: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 44: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 45: 15
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 46: Y
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 47: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 48: Посещение
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 49: Открыто
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 50: DVYALYKH
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 51: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 52: 1-HJLTKW
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 53: Y
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 54: RUB
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 55: 04/08/2019 00:00:00
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 56: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 57: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 58: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 59: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 60: No Match Row Id
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 61: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 62: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 63: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 64: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 65: 04/08/2019 09:34:45
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 66: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 67: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 68: 1-6BWOH
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 69: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 70: N
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 71: 0
+ObjMgrSqlLog	Detail	4	0000235e5caa0d80:142418	2019-04-08 12:34:45	Bind variable 72: Access Code
