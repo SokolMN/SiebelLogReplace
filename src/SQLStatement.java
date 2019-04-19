@@ -25,6 +25,8 @@ public class SQLStatement {
         this.siebelLog = siebelString;
     }
 
+
+
     public void replaceLog(){
         this.siebelReplaceLog = this.siebelLog;
         try {

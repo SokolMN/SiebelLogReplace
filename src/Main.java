@@ -60,16 +60,20 @@ public class Main {
 
        @Override
        public void actionPerformed(ActionEvent e) {
-           Pattern selectPattern = Pattern.compile("SELECT\\n");
+           Pattern selectPattern = Pattern.compile("^SELECT.*\\n");
            boolean select = selectPattern.matcher(Main.textAreaSiebel.getText()).find();
+           Pattern insertPattern = Pattern.compile("^INSERT.*");
+           boolean insert = insertPattern.matcher(Main.textAreaSiebel.getText()).find();
            SQLStatement sqlStatement;
 
            if(select){
                sqlStatement = new SelectStatement(Main.textAreaSiebel.getText());
+           }else if(insert){
+               sqlStatement = new InsertStatement(Main.textAreaSiebel.getText());
            }else{
                sqlStatement = new SQLStatement(Main.textAreaSiebel.getText());
            }
-           
+
            Main.textAreaSiebelResult.setText(replace(sqlStatement));
        }
 
