@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SiebelLogReplacer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SiebelLogReplacer_jar</output-path>
+    <root id="archive" name="CommonSiebelLogText.jar">
+      <element id="module-output" name="CommonSiebelLogText" />
+    </root>
+  </artifact>
+</component>

@@ -14,10 +14,21 @@ public class SQLStatement {
     }
 
     public void cutObjBinds(){
-        this.siebelReplaceLog = this.siebelReplaceLog.substring(0, this.siebelReplaceLog.indexOf("ObjMgrSqlLog"));
+        try {
+            this.siebelReplaceLog = this.siebelReplaceLog.substring(0, this.siebelReplaceLog.indexOf("ObjMgrSqlLog"));
+        }catch(StringIndexOutOfBoundsException e) {
+            //this.siebelReplaceLog = this.siebelReplaceLog.replaceAll("(ObjMgrSqlLog.*)|(SQLParseAndExecute.*)", "");
+            this.siebelReplaceLog = this.siebelReplaceLog.substring(0, this.siebelReplaceLog.indexOf("SQLParseAndExecute"));
+        }
     }
 
+
+
     public void removeFirstBind(){
+        //Пустой метод для того, чтобы можно было использовать полиморфизм в классе Main
+    }
+
+    public void addingValuesInComments(){
         //Пустой метод для того, чтобы можно было использовать полиморфизм в классе Main
     }
 
@@ -41,14 +52,23 @@ public class SQLStatement {
 
 
     public void setKeyValueTable(){
-        Pattern p = Pattern.compile("Bind variable \\d+:.*");
+        //Pattern p = Pattern.compile("(Bind variable \\d+:.*)|(\\s\\d:)"); Старая версия
+        Pattern p = Pattern.compile("\\s\\d{1,3}:\\s.*");
         Matcher m = p.matcher(this.siebelLog);
 
-        while (m.find()){
+        /*while (m.find()){
             String tempKey = m.group().substring(m.group().indexOf("ble")+4, m.group().indexOf(':')+1);
             String key = tempKey.replaceAll("\\d+:", ":" + tempKey.substring(0,tempKey.indexOf(':')));
             this.keyValueTable.put(key, m.group().substring(m.group().indexOf(':')+2));
+        }*///Старая версия
+        while (m.find()){
+            String tempKey = m.group();
+            String key = ":" + tempKey.substring(1, tempKey.indexOf(":"));
+            this.keyValueTable.put(key, m.group().substring(m.group().indexOf(':')+2));
         }
+
+        System.out.println("ЭТО МЕТОД setKeyValueTable");
+        System.out.println(keyValueTable.toString());
     }
 
 

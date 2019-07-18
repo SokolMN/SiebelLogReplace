@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ public class Main {
 
     static JTextArea textAreaSiebel = new JTextArea();
     static  JTextArea textAreaSiebelResult = new JTextArea();
+
     public static void main(String[] args) {
         JFrame frame = new JFrame();
 
@@ -31,6 +33,10 @@ public class Main {
         textAreaSiebelResult.setRows(30);
         textAreaSiebelResult.setEditable(false);
         textAreaSiebelResult.setMaximumSize(new Dimension(10, 10));
+        textAreaSiebelResult.setAutoscrolls(false);
+
+        DefaultCaret caret = (DefaultCaret)textAreaSiebelResult.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
 
 
 
@@ -60,9 +66,9 @@ public class Main {
 
        @Override
        public void actionPerformed(ActionEvent e) {
-           Pattern selectPattern = Pattern.compile("^SELECT.*\\n");
+           Pattern selectPattern = Pattern.compile("^.{0,2}SELECT.*\\n");
            boolean select = selectPattern.matcher(Main.textAreaSiebel.getText()).find();
-           Pattern insertPattern = Pattern.compile("^INSERT.*");
+           Pattern insertPattern = Pattern.compile("^.{0,2}INSERT.*\\n");
            boolean insert = insertPattern.matcher(Main.textAreaSiebel.getText()).find();
            SQLStatement sqlStatement;
 
@@ -83,6 +89,7 @@ public class Main {
            sqlStatement.removeFirstBind();
            sqlStatement.replaceLog();
            sqlStatement.cutObjBinds();
+           sqlStatement.addingValuesInComments();
            return sqlStatement.getSiebelReplaceLog();
        }
    }
