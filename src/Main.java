@@ -68,14 +68,21 @@ public class Main {
        public void actionPerformed(ActionEvent e) {
            Pattern selectPattern = Pattern.compile("^.{0,2}SELECT.*\\n");
            boolean select = selectPattern.matcher(Main.textAreaSiebel.getText()).find();
+
            Pattern insertPattern = Pattern.compile("^.{0,2}INSERT.*\\n");
            boolean insert = insertPattern.matcher(Main.textAreaSiebel.getText()).find();
+
+           Pattern updatePattern = Pattern.compile("^.{0,2}UPDATE.*");
+           boolean update = updatePattern.matcher(Main.textAreaSiebel.getText()).find();
+
            SQLStatement sqlStatement;
 
            if(select){
                sqlStatement = new SelectStatement(Main.textAreaSiebel.getText());
            }else if(insert){
                sqlStatement = new InsertStatement(Main.textAreaSiebel.getText());
+           }else if(update) {
+               sqlStatement = new UpdateStatement(Main.textAreaSiebel.getText());
            }else{
                sqlStatement = new SQLStatement(Main.textAreaSiebel.getText());
            }
