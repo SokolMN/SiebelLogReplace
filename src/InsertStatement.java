@@ -38,7 +38,7 @@ public class InsertStatement extends SQLStatement{
         Matcher m = p.matcher(siebelReplaceLogWithoutValues);
 
 
-        Pattern pvalues = Pattern.compile("(\\'.*?\\'(\\)){0,1})|(current_date)|(SIEBEL.*NEXTVAL)"); //Вытаскивание значений колонок
+        Pattern pvalues = Pattern.compile("(\\'.*?\\'(\\)){0,1})|(current_date)|(SIEBEL.*?NEXTVAL)"); //Вытаскивание значений колонок
         Matcher mvalues = pvalues.matcher(siebelReplaceLogValues);
 
 
@@ -47,7 +47,7 @@ public class InsertStatement extends SQLStatement{
             columnToValue.put(m.group(0), mvalues.group(0));
         }
 
-        System.out.println(columnToValue.toString());
+        System.out.println("Список значениййй" + columnToValue.toString());
 
         Set<String> keys = columnToValue.keySet();
 
