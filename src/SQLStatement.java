@@ -9,7 +9,9 @@ public class SQLStatement {
     public ArrayList<String> keyList = new ArrayList<>();
     public Hashtable keyValueTable = new Hashtable();
 
+
     public String getSiebelReplaceLog(){
+        this.siebelReplaceLog = this.siebelReplaceLog.replaceAll("\\*", "%");
         return this.siebelReplaceLog;
     }
 
@@ -79,6 +81,8 @@ public class SQLStatement {
     public ArrayList<String> getKeyList(){
         return this.keyList;
     }
+
+
 
     public void setKeyList(){
         Pattern p = Pattern.compile("( :[0-9]+)|(:[0-9]+,)|(:[0-9]+\\))");
