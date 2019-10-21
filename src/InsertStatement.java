@@ -22,15 +22,16 @@ public class InsertStatement extends SQLStatement{
 
             System.out.println(keyList.get(keyList.size()-1)); //Заменем последний элемент
             this.siebelReplaceLog = this.siebelReplaceLog.replaceFirst(", " + keyList.get(keyList.size()-1), ", '" + this.keyValueTable.get(keyList.get(keyList.size()-1)) + "'");
+            this.siebelReplaceLog = addingValuesInComments(this.siebelReplaceLog);
         }catch (NullPointerException e){
             System.out.println("Что-то пошло не так в методе replaceLog");
         }
     }
 
-    public void addingValuesInComments(){
+    private String addingValuesInComments(String replaceLogForInsert){
 
-        String siebelReplaceLogWithoutValues = this.siebelReplaceLog.substring(0, this.siebelReplaceLog.indexOf("VALUES"));
-        String siebelReplaceLogValues = this.siebelReplaceLog.substring(this.siebelReplaceLog.indexOf("VALUES"));
+        String siebelReplaceLogWithoutValues = replaceLogForInsert.substring(0, replaceLogForInsert.indexOf("VALUES"));
+        String siebelReplaceLogValues = replaceLogForInsert.substring(replaceLogForInsert.indexOf("VALUES"));
 
         Hashtable columnToValue = new Hashtable(); //Тут хранится <Название колонки>:<Значение колонки>
 
@@ -57,9 +58,11 @@ public class InsertStatement extends SQLStatement{
 
             if (key.substring(key.length() - 1).equals(")")){
                 key = key.substring(0, key.indexOf(")"));
-                this.siebelReplaceLog = this.siebelReplaceLog.replaceAll(key+"\\)",key + ") /*" + columnToValue.get(key+")") + "*/");
+                replaceLogForInsert = replaceLogForInsert.replaceAll(key+"\\)",key + ") /*" + columnToValue.get(key+")") + "*/");
             }
-            this.siebelReplaceLog = this.siebelReplaceLog.replaceFirst(key,key + " /*" + columnToValue.get(key) + "*/");
+            replaceLogForInsert = replaceLogForInsert.replaceFirst(key,key + " /*" + columnToValue.get(key) + "*/");
         }
+
+        return replaceLogForInsert;
     }
 }

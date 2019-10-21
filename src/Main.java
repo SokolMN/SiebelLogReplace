@@ -87,16 +87,14 @@ public class Main {
                sqlStatement = new SQLStatement(Main.textAreaSiebel.getText());
            }
 
-           Main.textAreaSiebelResult.setText(replace(sqlStatement));
+           Main.textAreaSiebelResult.setText(replace(sqlStatement, select));
        }
 
-       private String replace(SQLStatement sqlStatement){
+       private String replace(SQLStatement sqlStatement, boolean selectFlag){
            sqlStatement.setKeyList();
            sqlStatement.setKeyValueTable();
-           sqlStatement.removeFirstBind();
            sqlStatement.replaceLog();
            sqlStatement.cutObjBinds();
-           sqlStatement.addingValuesInComments();
            return sqlStatement.getSiebelReplaceLog();
        }
    }

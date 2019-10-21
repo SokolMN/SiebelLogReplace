@@ -26,13 +26,16 @@ public class SQLStatement {
 
 
 
-    public void removeFirstBind(){
-        //Пустой метод для того, чтобы можно было использовать полиморфизм в классе Main
+    private String removeFirstBind(String logForSelect){
+        this.keyList.remove(0);
+        this.keyValueTable.remove(":1");
+        this.keyValueTable.remove(":0");
+        this.keyList.remove(":0");
+        logForSelect= logForSelect.replaceAll(",\n.*:1", "");
+
+        return logForSelect;
     }
 
-    public void addingValuesInComments(){
-        //Пустой метод для того, чтобы можно было использовать полиморфизм в классе Main
-    }
 
     public SQLStatement(String siebelString){
         this.siebelLog = siebelString;
@@ -41,7 +44,17 @@ public class SQLStatement {
 
 
     public void replaceLog(){
-        this.siebelReplaceLog = this.siebelLog;
+
+        Pattern selectPattern = Pattern.compile("^.{0,2}SELECT.*\\n");
+        boolean selectFlg = selectPattern.matcher(this.siebelLog).find();
+
+        if(selectFlg){
+            this.siebelReplaceLog = removeFirstBind(this.siebelLog);
+        }else{
+            this.siebelReplaceLog = this.siebelLog;
+        }
+
+
         try {
             for(String i:keyList){
                 System.out.println("Заменяю это: " + i + " На это:" + this.keyValueTable.get(i));

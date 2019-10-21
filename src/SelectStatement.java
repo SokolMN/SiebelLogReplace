@@ -4,7 +4,7 @@ public class SelectStatement extends SQLStatement{
         super(siebelString);
     }
 
-    @Override
+   // @Override
     public void removeFirstBind(){
         this.keyList.remove(0);
         this.keyValueTable.remove(":1");
